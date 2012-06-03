@@ -33,8 +33,16 @@ module Dbdc
     end
 
     def list_sobjects
+      describe_sobjects.collect { |sobject| sobject['name'] }
+    end
+
+    def describe_sobjects(force_request=false)
       response = connection.get "/services/data/v#{@options[:api_version]}/sobjects"
-      response.body
+      if force_request
+        @sobjects = response.body['sobjects']
+      else
+        @sobjects ||= response.body['sobjects']
+      end
     end
 
   private

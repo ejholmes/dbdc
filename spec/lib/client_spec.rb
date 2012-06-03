@@ -29,13 +29,21 @@ describe Dbdc::Client do
     end
   end
 
-  context "when authenitcated" do
+  context "when authenticated" do
     before(:each) { VCR.use_cassette('authenticate_success_response') { subject.authenticate } }
 
-    describe ".list_sobjects" do
-      it "lists all sobjects" do
+    describe ".describe_sobjects" do
+      it "describes all sobjects" do
         VCR.use_cassette 'list_sobjects_success' do
-          puts subject.list_sobjects
+          subject.describe_sobjects.should be_a(Array)
+        end
+      end
+    end
+
+    describe ".list_sobjects" do
+      it "lists all the sobjects" do
+        VCR.use_cassette 'list_sobjects_success' do
+          subject.list_sobjects.should be_a(Array)
         end
       end
     end
