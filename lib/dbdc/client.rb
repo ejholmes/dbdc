@@ -45,6 +45,11 @@ module Dbdc
       end
     end
 
+    def describe_sobject(name, force_request=false)
+      response = connection.get "/services/data/v#{@options[:api_version]}/sobjects/#{name}/describe"
+      response.body
+    end
+
   private
 
     def connection

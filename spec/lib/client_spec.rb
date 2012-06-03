@@ -34,15 +34,23 @@ describe Dbdc::Client do
 
     describe ".describe_sobjects" do
       it "describes all sobjects" do
-        VCR.use_cassette 'list_sobjects_success' do
+        VCR.use_cassette 'describe_sobjects_success' do
           subject.describe_sobjects.should be_a(Array)
+        end
+      end
+    end
+
+    describe ".describe_sobject" do
+      it "describes an sobject" do
+        VCR.use_cassette 'describe_account_success' do
+          subject.describe_sobject('Account').should be_a(Hash)
         end
       end
     end
 
     describe ".list_sobjects" do
       it "lists all the sobjects" do
-        VCR.use_cassette 'list_sobjects_success' do
+        VCR.use_cassette 'describe_sobjects_success' do
           subject.list_sobjects.should be_a(Array)
         end
       end
