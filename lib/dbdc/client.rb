@@ -24,9 +24,7 @@ module Dbdc
         }
       end
 
-      if response.status == 400
-        raise Dbdc::Error, response.body["error"]
-      end
+      raise Dbdc::Error, response.body["error"] if response.status != 200
     end
 
   private
