@@ -55,5 +55,22 @@ describe Dbdc::Client do
         end
       end
     end
+
+    describe ".materialize" do
+      it "assigns an sobject to a variable" do
+        VCR.use_cassette 'describe_account_success' do
+          account = subject.materialize('Account', false)
+          account.class.should be(Class)
+          expect { Account.class }.to raise_error
+        end
+      end
+
+      it "materializes an sobject into the global namespace" do
+        VCR.use_cassette 'describe_account_success' do
+          subject.materialize('Account')
+          Account.class.should be(Class)
+        end
+      end
+    end
   end
 end

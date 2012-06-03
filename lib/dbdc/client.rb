@@ -50,6 +50,17 @@ module Dbdc
       response.body
     end
 
+    def materialize(classnames, define=true)
+      classnames = [classnames] unless classnames.is_a?(Array)
+      classnames.each do |classname|
+        klazz = Class.new(Dbdc::Sobject::Sobject)
+        klazz.client = self
+        klazz.materialize(classname)
+        Object.const_set(classname, klazz) if define
+        return klazz if classnames.length == 1
+      end
+    end
+
   private
 
     def connection
