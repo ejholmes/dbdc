@@ -37,6 +37,10 @@ module Dbdc
     attr_accessor :password
     # The security token to use during login.
     attr_accessor :security_token
+    # The OAuth client id
+    attr_accessor :client_id
+    # The OAuth client secret
+    attr_accessor :client_secret
     # Set this to true if you're authenticating with a Sandbox instance.
     # Defaults to false.
     attr_accessor :host

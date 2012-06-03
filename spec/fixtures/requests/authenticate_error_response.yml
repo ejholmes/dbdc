@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=client_id&client_secret=client_secret&username=foo&password=bartoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      server:
+      - !binary ""
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '77'
+      date:
+      - Sun, 03 Jun 2012 20:35:49 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"error":"invalid_client_id","error_description":"client identifier
+        invalid"}'
+    http_version: 
+  recorded_at: Sun, 03 Jun 2012 20:35:55 GMT
+recorded_with: VCR 2.1.1

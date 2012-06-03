@@ -1,0 +1,30 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=client_id&client_secret=client_secret&username=foo&password=bartoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - !binary ""
+      content-type:
+      - application/json; charset=UTF-8
+      transfer-encoding:
+      - chunked
+      date:
+      - Sun, 03 Jun 2012 20:32:15 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"https://login.salesforce.com/id/00DU0000000IlbhMAC/005U0000000EGpcIAG","issued_at":"1338755536379","instance_url":"https://na12.salesforce.com","signature":"TsdUhj1BYtGcCUhuHHEy5KzZTlda6QJdVRSqKRWBUZE=","access_token":"00DU0000000Ilbh!AQoAQOOBkSVMo7Ft56qoXLY_FqUIw5nmJC8_DeiXnp0Hl4uwUIxi2Zz56m4KL2o2hu5Lz5efwFuNCoM5igQxXJSJxZxjAhQM"}'
+    http_version: 
+  recorded_at: Sun, 03 Jun 2012 20:32:21 GMT
+recorded_with: VCR 2.1.1
