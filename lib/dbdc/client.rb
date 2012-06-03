@@ -1,5 +1,6 @@
 module Dbdc
   class Client
+    attr_reader :access_token
 
     def initialize(options={})
       @options = {
@@ -8,7 +9,8 @@ module Dbdc
         :security_token => Dbdc.configuration.security_token,
         :client_id      => Dbdc.configuration.client_id,
         :client_secret  => Dbdc.configuration.client_secret,
-        :host           => Dbdc.configuration.host
+        :host           => Dbdc.configuration.host,
+        :api_version    => Dbdc.configuration.api_version
       }.merge(options) if options.is_a?(Hash)
     end
 
@@ -25,6 +27,14 @@ module Dbdc
       end
 
       raise Dbdc::Error, response.body["error"] if response.status != 200
+      @access_token = response.body
+      @options[:host] = @access_token['instance_url'].gsub(/https:\/\//, '')
+      @connection = nil
+    end
+
+    def list_sobjects
+      response = connection.get "/services/data/v#{@options[:api_version]}/sobjects"
+      response.body
     end
 
   private
@@ -36,6 +46,8 @@ module Dbdc
         builder.response :logger if Dbdc.log?
         builder.adapter Faraday.default_adapter
       end
+      @connection.headers['Authorization'] = "OAuth #{@access_token['access_token']}" if @access_token
+      @connection
     end
 
   end

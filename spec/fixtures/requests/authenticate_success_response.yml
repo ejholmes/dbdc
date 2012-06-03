@@ -14,17 +14,19 @@ http_interactions:
     headers:
       server:
       - !binary ""
+      cache-control:
+      - no-store
       content-type:
       - application/json; charset=UTF-8
-      transfer-encoding:
-      - chunked
+      content-length:
+      - '340'
       date:
-      - Sun, 03 Jun 2012 20:32:15 GMT
+      - Sun, 03 Jun 2012 21:15:07 GMT
       connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"id":"https://login.salesforce.com/id/00DU0000000IlbhMAC/005U0000000EGpcIAG","issued_at":"1338755536379","instance_url":"https://na12.salesforce.com","signature":"TsdUhj1BYtGcCUhuHHEy5KzZTlda6QJdVRSqKRWBUZE=","access_token":"00DU0000000Ilbh!AQoAQOOBkSVMo7Ft56qoXLY_FqUIw5nmJC8_DeiXnp0Hl4uwUIxi2Zz56m4KL2o2hu5Lz5efwFuNCoM5igQxXJSJxZxjAhQM"}'
+      string: ! '{"id":"https://login.salesforce.com/id/00DU0000000IlbhMAC/005U0000000EGpcIAG","issued_at":"1338758107328","instance_url":"https://na12.salesforce.com","signature":"EMnuWe0PQ7kE5ak/sa8zKmIWgfHlLyt55NnArjLyeHo=","access_token":"00DU0000000Ilbh!AQoAQOOBkSVMo7Ft56qoXLY_FqUIw5nmJC8_DeiXnp0Hl4uwUIxi2Zz56m4KL2o2hu5Lz5efwFuNCoM5igQxXJSJxZxjAhQM"}'
     http_version: 
-  recorded_at: Sun, 03 Jun 2012 20:32:21 GMT
+  recorded_at: Sun, 03 Jun 2012 21:15:12 GMT
 recorded_with: VCR 2.1.1

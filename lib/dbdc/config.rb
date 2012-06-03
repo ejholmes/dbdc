@@ -31,6 +31,7 @@ module Dbdc
   end
 
   class Configuration
+    attr_accessor :api_version
     # The username to use during login.
     attr_accessor :username
     # The password to use during login.
@@ -46,7 +47,8 @@ module Dbdc
     attr_accessor :host
 
     def initialize
-      @host ||= 'login.salesforce.com'
+      @api_version ||= '24.0'
+      @host        ||= 'login.salesforce.com'
     end
 
     def logger
