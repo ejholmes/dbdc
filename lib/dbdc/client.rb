@@ -32,8 +32,8 @@ module Dbdc
       @connection = nil
     end
 
-    def list_sobjects
-      describe_sobjects.collect { |sobject| sobject['name'] }
+    def list_sobjects(force_request=false)
+      describe_sobjects(force_request).collect { |sobject| sobject['name'] }
     end
 
     def describe_sobjects(force_request=false)
